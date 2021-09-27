@@ -5,7 +5,7 @@ services:
         volumes:
             - ./gh:/data
         ports:
-            - "8990:8990"
+            - "8990:8988"
         command: /data/north-america_us_georgia.pbf
         logging:
           driver: none
