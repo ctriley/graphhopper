@@ -1,4 +1,4 @@
-FROM maven:3.6.3-jdk-8 as build
+FROM maven:3.8.3-jdk-11 as build
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget
 
@@ -24,9 +24,9 @@ COPY ./graphhopper.sh ./pom.xml ./config.yml ./
 
 VOLUME [ "/data" ]
 
-EXPOSE 8990
+EXPOSE 8988
 
-HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://localhost:8989/health || exit 1
+HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://localhost:8988/health || exit 1
 
 ENTRYPOINT [ "./graphhopper.sh", "web" ]
 

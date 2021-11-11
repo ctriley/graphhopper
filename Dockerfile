@@ -12,7 +12,7 @@ FROM openjdk:11.0-jre
 
 RUN apt-get update && apt-get upgrade -y
 
-ENV JAVA_OPTS="-server -Xmx8g -Xms8g -XX:+UseG1GC -Ddw.server.application_connectors[0].bind_host=0.0.0.0 -Ddw.server.application_connectors[0].port=8990"
+ENV JAVA_OPTS="-server -Xmx8g -Xms8g -XX:+UseG1GC -Ddw.server.application_connectors[0].bind_host=0.0.0.0 -Ddw.server.application_connectors[0].port=8989"
 
 RUN mkdir -p /data
 
@@ -24,7 +24,7 @@ COPY ./graphhopper.sh ./pom.xml ./config.yml ./
 
 VOLUME [ "/data" ]
 
-EXPOSE 8990
+EXPOSE 8989
 
 HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://localhost:8989/health || exit 1
 
