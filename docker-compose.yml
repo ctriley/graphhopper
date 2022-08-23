@@ -1,0 +1,11 @@
+version: '3'
+services:
+    graph-hopper:
+        image: ctriley/graphhopper:sept2021
+        volumes:
+            - ./gh:/data
+        ports:
+            - "8989:8989"
+        command: /data/north-america_us.pbf
+        logging:
+          driver: none

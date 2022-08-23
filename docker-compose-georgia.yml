@@ -1,0 +1,10 @@
+version: '3'
+services:
+    graph-hopper:
+        image: ctriley/graphhopper-georgia:latest
+        volumes:
+            - ./gh:/data
+        ports:
+            - "8988:8988"
+        command: /data/north-america_us_georgia.pbf
+
