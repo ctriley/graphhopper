@@ -6,7 +6,7 @@ WORKDIR /graphhopper
 
 COPY . .
 
-RUN ./graphhopper.sh build -c config.yml
+RUN mvn clean install
 
 FROM openjdk:11.0-jre
 
@@ -20,7 +20,9 @@ WORKDIR /graphhopper
 
 COPY --from=build /graphhopper/web/target/*.jar ./web/target/
 # pom.xml is used to get the jar file version. see https://github.com/graphhopper/graphhopper/pull/1990#discussion_r409438806
-COPY ./graphhopper.sh ./pom.xml ./config.yml ./
+COPY ./config.yml ./
+
+COPY ./graphhopper.sh ./
 
 VOLUME [ "/data" ]
 
@@ -28,6 +30,4 @@ EXPOSE 8989
 
 HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://localhost:8989/health || exit 1
 
-ENTRYPOINT [ "./graphhopper.sh", "web" ]
-
-CMD [ "/data/europe_germany_berlin.pbf" ]
+ENTRYPOINT [ "./graphhopper.sh", "-c"  "config.yml"]
