@@ -145,7 +145,7 @@ graphhopper:
 
   # You can define the maximum visited nodes when routing. This may result in not found connections if there is no
   # connection between two points within the given visited nodes. The default is Integer.MAX_VALUE. Useful for flexibility mode
-  # routing.max_visited_nodes: 1000000
+  routing.max_visited_nodes: 1000000
 
   # Control how many active landmarks are picked per default, this can improve query performance
   # routing.lm.active_landmarks: 4
@@ -193,16 +193,16 @@ server:
     port: 8990
     bind_host: localhost
 # See https://www.dropwizard.io/en/latest/manual/core.html#logging
-logging:
-  appenders:
-  - type: file
-    time_zone: UTC
-    current_log_filename: logs/graphhopper.log
-    log_format: "%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
-    archive: true
-    archived_log_filename_pattern: ./logs/graphhopper-%d.log.gz
-    archived_file_count: 10
-    never_block: true
-  - type: console
-    time_zone: UTC
-    log_format: "%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+#logging:
+#  appenders:
+#  - type: file
+#    time_zone: UTC
+#    current_log_filename: logs/graphhopper.log
+#    log_format: "%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+#    archive: true
+#    archived_log_filename_pattern: ./logs/graphhopper-%d.log.gz
+#    archived_file_count: 10
+#    never_block: true
+#  - type: console
+#    time_zone: UTC
+#    log_format: "%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
